@@ -21,6 +21,7 @@ O projeto foi estruturado para ser limpo, escalável e com uma interface profiss
 
 ##  Estrutura do Projeto
 
+```
 app/
 │
 ├── api/
@@ -48,7 +49,7 @@ lib/
 ├── auth.ts # Lógica JWT, bcrypt, cookies e CSRF
 ├── db.ts # Configuração e inicialização do Prisma Client
 ├── rate-limit.ts # Implementação de rate limiting (proteção de rotas)
-└── validation.ts # Schemas Zod (validação de login e registro)
+└── validation.ts # Schemas Zod (validação de login e registro)```
 
 
 ---
