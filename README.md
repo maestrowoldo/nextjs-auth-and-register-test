@@ -78,6 +78,7 @@ lib/
 ---
 
 
+
 ###  Clonar o projeto
 ```bash
 git clone https://github.com/seuusuario/affinity-secure.git
