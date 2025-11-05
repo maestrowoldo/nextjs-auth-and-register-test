@@ -22,26 +22,33 @@ O projeto foi estruturado para ser limpo, escalável e com uma interface profiss
 ##  Estrutura do Projeto
 
 app/
-
+│
 ├── api/
 │ └── auth/
-│ ├── csrf/route.ts # Gera e define token CSRF
-│ ├── login/route.ts # Rota de autenticação (login)
-│ ├── logout/route.ts # Logout seguro
-│ └── register/route.ts # Registro de novos usuários
+│ ├── csrf/
+│ │ └── route.ts # Gera e define o token CSRF
+│ ├── login/
+│ │ └── route.ts # Rota de autenticação (login)
+│ ├── logout/
+│ │ └── route.ts # Logout seguro e redirecionamento
+│ └── register/
+│ └── route.ts # Registro de novos usuários
 │
 ├── auth/
-│ ├── login/page.tsx # Página de login
-│ └── register/page.tsx # Página de registro
+│ ├── login/
+│ │ └── page.tsx # Página de login (frontend)
+│ └── register/
+│ └── page.tsx # Página de registro (frontend)
 │
 └── dashboard/
 └── page.tsx # Painel do usuário autenticado
 │
 lib/
-├── auth.ts # JWT, bcrypt, cookies e CSRF
-├── db.ts # Configuração do Prisma Client
-├── rate-limit.ts # Implementação de rate limiting
-└── validation.ts # Schemas Zod (login e registro)
+│
+├── auth.ts # Lógica JWT, bcrypt, cookies e CSRF
+├── db.ts # Configuração e inicialização do Prisma Client
+├── rate-limit.ts # Implementação de rate limiting (proteção de rotas)
+└── validation.ts # Schemas Zod (validação de login e registro)
 
 
 ---
