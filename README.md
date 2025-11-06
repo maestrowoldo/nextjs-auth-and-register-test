@@ -11,7 +11,7 @@ Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso
 
 
 > **Assista à demonstração completa no YouTube:**  
-> [![Ver vídeo]**https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v**
+>**https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v**
 
 > Caso prefira, veja a versão hospedada:  
 > **https://nextjs-auth-and-register-test.vercel.app/auth/login**
