@@ -11,7 +11,7 @@ Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso
 
 
 > **Assista à demonstração completa no YouTube:**  
-> [![Ver vídeo](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v/maxresdefault.jpg)](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v)
+> [![Ver vídeo]**https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v**
 
 > Caso prefira, veja a versão hospedada:  
 > **https://nextjs-auth-and-register-test.vercel.app/auth/login**
@@ -121,13 +121,22 @@ Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso
 
 
 
-###  Clonar o projeto
+##  Clonar o projeto
 ```bash
-git clone https://github.com/seuusuario/cd nextjs-auth-and-register-test
+git clone https://github.com/maestrowoldo/nextjs-auth-and-register-test.git
 cd nextjs-auth-and-register-test
-
-**Instale as dependências**
+```
+## Instalar as dependências
+```bash
    npm install
+```
+
+## Criar o Arquivo .env
+```bash
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="sua_chave_jwt"
+CSRF_SECRET="sua_chave_csrf"
+NODE_ENV="development"
 ```
 
 ### Segurança Implementada
