@@ -46,39 +46,50 @@ Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso
 
 ---
 
-##  Estrutura do Projeto
-
-```
-app/
-│
-├── api/
-│ └── auth/
-│ ├── csrf/
-│ │ └── route.ts # Gera e define o token CSRF
-│ ├── login/
-│ │ └── route.ts # Rota de autenticação (login)
-│ ├── logout/
-│ │ └── route.ts # Logout seguro e redirecionamento
-│ └── register/
-│ └── route.ts # Registro de novos usuários
-│
-├── auth/
-│ ├── login/
-│ │ └── page.tsx # Página de login (frontend)
-│ └── register/
-│ └── page.tsx # Página de registro (frontend)
-│
-└── dashboard/
-└── page.tsx # Painel do usuário autenticado
-│
-lib/
-│
-├── auth.ts # Lógica JWT, bcrypt, cookies e CSRF
-├── db.ts # Configuração e inicialização do Prisma Client
-├── rate-limit.ts # Implementação de rate limiting (proteção de rotas)
-└── validation.ts # Schemas Zod (validação de login e registro)
+# Estrutura do Projeto
 ```
 
+.
+├── app/
+│   ├── auth/                   # Agrupador de rotas de autenticação
+│   │   ├── register/             # Página de registro
+│   │   │   └── page.tsx          # Formulário de criação de conta
+│   │   └── login/                # Página de login
+│   │       └── page.tsx          # Formulário de autenticação
+│   │
+│   ├── dashboard/                # Área protegida (usuário autenticado)
+│   │   └── page.tsx              # Página inicial do painel do usuário
+│   │
+│   ├── api/                      # Rotas de API do Next.js
+│   │   └── auth/                 # Endpoints de autenticação
+│   │       ├── register/route.ts # Registro de novo usuário (POST)
+│   │       ├── login/route.ts    # Autenticação (POST)
+│   │       └── logout/route.ts   # Encerramento de sessão (POST)
+│   │
+│   └── layout.tsx                # Layout principal da aplicação
+│
+├── lib/
+│   ├── auth.ts                   # JWT, bcrypt, cookies e CSRF
+│   ├── db.ts                     # Configuração do Prisma Client
+│   ├── rate-limit.ts             # Controle de requisições e segurança
+│   └── validation.ts             # Schemas Zod (login e registro)
+│
+├── prisma/
+│   └── schema.prisma             # Definição dos modelos e conexão com o banco
+│       # Contém:
+│       #   - Model "User" (dados do usuário)
+│       #   - Datasource "db" (configuração do banco)
+│       #   - Generator "client" (para o Prisma Client)
+│
+├── public/                       # Arquivos públicos (imagens, vídeos, ícones)
+│   ├── logo.png
+│   └── favicon.ico
+│
+├── middleware.ts                 # Middleware global para autenticação e rotas
+├── .env                          # Variáveis de ambiente (ex: DATABASE_URL, JWT_SECRET)
+├── package.json                  # Dependências e scripts do projeto
+└── README.md                     # Documentação principal
+```
 ---
 
 ## Fluxo de Autenticação
@@ -108,8 +119,8 @@ lib/
 
 ###  Clonar o projeto
 ```bash
-git clone https://github.com/seuusuario/affinity-secure.git
-cd affinity-secure
+git clone https://github.com/seuusuario/cd nextjs-auth-and-register-test
+cd nextjs-auth-and-register-test
 
 **Instale as dependências**
    npm install
