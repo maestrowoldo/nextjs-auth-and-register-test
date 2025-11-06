@@ -1,7 +1,34 @@
 # Affinity Secure — Sistema de Autenticação com Next.js 14+
 
-Um sistema completo de **autenticação moderna e segura**, desenvolvido em **Next.js 14**, com **validação via Zod**, **proteção CSRF**, **JWT com cookies HttpOnly**, e **controle de taxa (rate limit)**.  
-O projeto foi estruturado para ser limpo, escalável e com uma interface profissional utilizando **Tailwind CSS**.
+**Affinity Secure** é um sistema de autenticação completo e moderno, desenvolvido com **Next.js 14**, **TypeScript**, **Prisma ORM** e **Tailwind CSS**.  
+O projeto implementa autenticação segura com **hash de senha (bcrypt)**, **validação CSRF**, **JWT tokens** e **proteção de rotas**.  
+Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso em **web e mobile**.
+
+---
+
+> **Assista à demonstração completa no YouTube:**  
+> [![Ver vídeo](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v/maxresdefault.jpg)](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v)
+
+> Caso prefira, veja a versão hospedada:  
+> **https://nextjs-auth-and-register-test.vercel.app/auth/login**
+
+### Cadastro de Usuário
+- Campos: nome completo, e-mail, senha e confirmação.  
+- Validação de dados com **Zod** no cliente e servidor.  
+- Verificação automática de e-mail existente.  
+- Redirecionamento automático para tela de login após sucesso.
+
+### Login e Sessão
+- Login com e-mail e senha.  
+- Autenticação com **JWT + cookies seguros** (httpOnly).  
+- Opção “Lembrar-me” para sessões persistentes.  
+- Logout com limpeza completa do cookie.  
+- Proteção contra **CSRF e XSS**.
+
+### Dashboard
+- Acesso restrito apenas a usuários autenticados.  
+- Exibe informações do usuário logado.  
+- Botão de logout seguro.  
 
 ---
 
@@ -84,6 +111,25 @@ lib/
 git clone https://github.com/seuusuario/affinity-secure.git
 cd affinity-secure
 
+** Instale as dependências**
+   npm install
+
+### Segurança Implementada
+
+ Criptografia de senhas com bcryptjs
+ Tokens JWT armazenados em cookies httpOnly
+ Proteção CSRF (Double Submit Token)
+ Sanitização de dados no servidor
+ Variáveis sensíveis em .env (não versionadas)
+ Rate-limiting básico (opcional via middleware)
+
+ ## Boas Práticas
+
+-Código comentado e organizado por camadas (lib, app, api)
+-Reutilização de componentes e validações compartilhadas
+-Design responsivo com Tailwind
+-Aderência ao padrão ESLint/Prettier
+-Deploy automatizado via GitHub → Vercel
 
 
 Observação
