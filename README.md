@@ -1,10 +1,15 @@
 # Affinity Secure — Sistema de Autenticação com Next.js 14+
 
+
+s<p align="center">
+  <img src="./public/Tela_Inicial.jpg" alt="Tela de Inicial" width="500"/>
+</p>
 **Affinity Secure** é um sistema de autenticação completo e moderno, desenvolvido com **Next.js 14**, **TypeScript**, **Prisma ORM** e **Tailwind CSS**.  
 O projeto implementa autenticação segura com **hash de senha (bcrypt)**, **validação CSRF**, **JWT tokens** e **proteção de rotas**.  
 Totalmente responsivo, com **interfaces modernas e limpas**, projetadas para uso em **web e mobile**.
 
 ---
+
 
 > **Assista à demonstração completa no YouTube:**  
 > [![Ver vídeo](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v/maxresdefault.jpg)](https://1drv.ms/v/c/37cd42e69fce9179/ERZHTusPMSNApmDBsieAt-IBT5ZGAoYPq409neGs6_Fu5w?e=MAoZ6v)
