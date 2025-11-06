@@ -42,12 +42,7 @@ export default function Home() {
             >
               Fazer Login
             </a>
-            <a
-              href="/dashboard"
-              className="w-full sm:w-48 text-sm text-blue-900 underline hover:text-blue-950 transition-all self-center sm:self-auto"
-            >
-              Acessar Dashboard
-            </a>
+
           </div>
 
           {/* Rodapé */}

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { LoginSchema } from '@/lib/validation';
 
-// Obtém o token CSRF da API
+// Função para buscar token CSRF
 async function fetchCsrfToken() {
   const res = await fetch('/api/auth/csrf');
   const data = await res.json();
@@ -18,16 +18,15 @@ export default function LoginPage() {
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Carrega o token CSRF assim que o componente é montado
-  useEffect(() => { fetchCsrfToken().then(setCsrf); }, []);
+  useEffect(() => {
+    fetchCsrfToken().then(setCsrf);
+  }, []);
 
-  // Envio do formulário de login
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setMsg('');
     setLoading(true);
 
-    // Validação de campos com Zod
     const parsed = LoginSchema.safeParse({ ...form, csrfToken: csrf });
     if (!parsed.success) {
       setMsg('Verifique os campos.');
@@ -35,7 +34,6 @@ export default function LoginPage() {
       return;
     }
 
-    // Requisição à API de login
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -49,56 +47,73 @@ export default function LoginPage() {
       return;
     }
 
-    // Redireciona para o dashboard após login bem-sucedido
     router.push('/dashboard');
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 p-4 sm:p-6">
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col">
-        
-        {/* Cabeçalho com logotipo e título */}
-        <div className="bg-gradient-to-r from-blue-900 to-indigo-800 py-6 flex flex-col items-center text-white">
-          <Image
-            src="/logo-Affinity-Secure.png"
-            alt="Affinity Secure Logo"
-            width={100}
-            height={100}
-            className="mb-2 drop-shadow-md"
-          />
-          <h1 className="text-2xl font-bold">Affinity Secure</h1>
-          <p className="text-sm opacity-80">Acesso à plataforma</p>
-        </div>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4 sm:p-8">
+      {/* Card principal */}
+      <div className="w-full max-w-3xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl rounded-3xl p-10 sm:p-14 flex flex-col items-center text-center">
+        {/* Logo e título */}
+        <Image
+          src="/logo-Affinity-Secure.png"
+          alt="Affinity Secure Logo"
+          width={130}
+          height={130}
+          className="mb-6 drop-shadow-md"
+        />
 
-        {/* Formulário de autenticação */}
-        <div className="p-6 sm:p-8 flex-1">
-          {msg && <p className="text-center text-red-600 mb-4">{msg}</p>}
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Affinity Secure</h1>
+        <p className="text-gray-600 text-base mb-8">
+          Faça login para acessar sua conta
+        </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="email"
-              placeholder="E-mail"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-800 focus:outline-none"
-            />
+        {/* Formulário */}
+        <div className="w-full max-w-md">
+          {msg && (
+            <p className="text-center text-red-600 text-sm mb-4">{msg}</p>
+          )}
 
-            <input
-              type="password"
-              placeholder="Senha"
-              value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-800 focus:outline-none"
-            />
-
-            <label className="flex items-center gap-2 text-sm text-gray-600">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
               <input
-                type="checkbox"
-                checked={form.remember}
-                onChange={(e) => setForm({ ...form, remember: e.target.checked })}
+                type="email"
+                placeholder="E-mail"
+                value={form.email}
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+                className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none"
               />
-              Lembrar-me
-            </label>
+            </div>
+
+            <div>
+              <input
+                type="password"
+                placeholder="Senha"
+                value={form.password}
+                onChange={(e) =>
+                  setForm({ ...form, password: e.target.value })
+                }
+                className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none"
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2 text-gray-600">
+                <input
+                  type="checkbox"
+                  checked={form.remember}
+                  onChange={(e) =>
+                    setForm({ ...form, remember: e.target.checked })
+                  }
+                />
+                Lembrar-me
+              </label>
+              <a href="#" className="text-blue-800 hover:text-blue-950">
+                Esqueceu a senha?
+              </a>
+            </div>
 
             <button
               disabled={loading}
@@ -109,13 +124,29 @@ export default function LoginPage() {
 
             <p className="text-sm text-center mt-4 text-gray-700">
               Ainda não tem conta?{' '}
-              <a href="/auth/register" className="text-blue-800 underline hover:text-blue-950">
+              <a
+                href="/auth/register"
+                className="text-blue-900 underline hover:text-blue-950"
+              >
                 Criar agora
               </a>
             </p>
           </form>
         </div>
+
+        {/* Rodapé */}
+        <div className="mt-10 text-xs text-gray-500">
+          <p>Desenvolvido por <strong>Woldo</strong></p>
+          <p className="text-[11px] mt-1">
+            Projeto técnico • Next.js 14 + Tailwind + Prisma + JWT
+          </p>
+        </div>
       </div>
+
+      {/* Créditos */}
+      <footer className="mt-8 text-gray-400 text-xs sm:text-sm text-center">
+        <p>© 2025 Affinity Secure • Todos os direitos reservados</p>
+      </footer>
     </main>
   );
 }
