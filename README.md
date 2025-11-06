@@ -76,12 +76,12 @@ lib/
 ├── auth.ts # Lógica JWT, bcrypt, cookies e CSRF
 ├── db.ts # Configuração e inicialização do Prisma Client
 ├── rate-limit.ts # Implementação de rate limiting (proteção de rotas)
-└── validation.ts # Schemas Zod (validação de login e registro)```
-
+└── validation.ts # Schemas Zod (validação de login e registro)
+```
 
 ---
 
-##  Fluxo de Autenticação
+## Fluxo de Autenticação
 
 1. **Registro:**  
    O usuário preenche os dados → o backend valida via **Zod** → senha é **criptografada com bcrypt** → dados são salvos no banco via **Prisma**.
@@ -111,27 +111,26 @@ lib/
 git clone https://github.com/seuusuario/affinity-secure.git
 cd affinity-secure
 
-** Instale as dependências**
+**Instale as dependências**
    npm install
+```
 
 ### Segurança Implementada
 
- Criptografia de senhas com bcryptjs
- Tokens JWT armazenados em cookies httpOnly
- Proteção CSRF (Double Submit Token)
- Sanitização de dados no servidor
- Variáveis sensíveis em .env (não versionadas)
- Rate-limiting básico (opcional via middleware)
+ - Criptografia de senhas com bcryptjs
+ - Tokens JWT armazenados em cookies httpOnly
+ - Proteção CSRF (Double Submit Token)
+ - Sanitização de dados no servidor
+ - Variáveis sensíveis em .env (não versionadas)
+ - Rate-limiting básico (opcional via middleware)
 
- ## Boas Práticas
+ ### Boas Práticas
+   - Código comentado e organizado por camadas (lib, app, api)
+   - Reutilização de componentes e validações compartilhadas
+   - Design responsivo com Tailwind
+   - Aderência ao padrão ESLint/Prettier
+   - Deploy automatizado via GitHub → Vercel
 
--Código comentado e organizado por camadas (lib, app, api)
--Reutilização de componentes e validações compartilhadas
--Design responsivo com Tailwind
--Aderência ao padrão ESLint/Prettier
--Deploy automatizado via GitHub → Vercel
 
-
-Observação
-
+### Observação
 Este projeto foi desenvolvido como teste técnico de autenticação com foco em boas práticas de segurança, tipagem e escalabilidade no ecossistema Next.js.
